@@ -105,12 +105,12 @@ class MQTTClientFactory(ClientFactory):
     # copy some raw valid control packets into a directory under valid-cases
     # and refer to that directory by name in one of these sessions here.
     # See readme.txt.
-    session_structures = [
-        ['connect', 'disconnect'],
-        ['connect', 'subscribe', 'disconnect'],
-        ['connect', 'subscribe', 'publish', 'disconnect'],
-        ['connect', 'subscribe', 'publish', 'publish-ack', 'publish-release', 'publish-complete', 'publish-received', 'publish-complete', 'disconnect'],
-        ['connect', 'publish', 'publish-release', 'subscribe', 'publish-received', 'publish-ack', 'disconnect']]
+
+    packets = ['auth', 'connack', 'connect', 'disconnect', 'pingreq', 'pingresp', 'puback', 'pubcomp', 'publish', 'pubrec', 'pubrel', 'suback', 'subscribe', 'unsuback', 'unsubcribe']
+    session_structures = []
+
+    for packet in packets:
+        session_structures.append(['connect', packet, 'disconnect'])
 
     def __init__(self, fuzz_ratio, send_delay, radamsa_path, validcases_path, valid_connect):
         # We cycle through the sessions again and again

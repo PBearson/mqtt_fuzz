@@ -106,7 +106,7 @@ class MQTTClientFactory(ClientFactory):
     # and refer to that directory by name in one of these sessions here.
     # See readme.txt.
 
-    packets = ['auth', 'connack', 'connect', 'disconnect', 'pingreq', 'pingresp', 'puback', 'pubcomp', 'publish', 'pubrec', 'pubrel', 'suback', 'subscribe', 'unsuback', 'unsubcribe']
+    packets = ['auth', 'connack', 'connect', 'disconnect', 'pingreq', 'pingresp', 'puback', 'pubcomp', 'publish', 'pubrec', 'pubrel', 'suback', 'subscribe', 'unsuback', 'unsubscribe']
     session_structures = []
 
     for packet in packets:
